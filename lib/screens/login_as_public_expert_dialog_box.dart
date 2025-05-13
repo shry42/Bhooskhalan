@@ -1,9 +1,9 @@
-import 'package:bhooskhalan/screens/expert_login_screen.dart';
-import 'package:bhooskhalan/screens/public_login.dart';
+import 'package:bhooskhalan/screens/expert_login_screens/expert_login_screen.dart';
+import 'package:bhooskhalan/screens/public_login_screens/public_login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-void showLoginAsDialog(BuildContext context) {
+void showLoginAsPublicAndExpertDialog(BuildContext context) {
   showDialog(
     context: context,
     builder: (context) => Dialog(

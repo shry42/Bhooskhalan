@@ -1,4 +1,4 @@
-import 'package:bhooskhalan/screens/login_page.dart';
+import 'package:bhooskhalan/screens/login_register_pages/login_register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: LoginPage(),
+      home: LoginRegisterScreen(),
     );
   }
 }

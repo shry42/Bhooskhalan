@@ -1,17 +1,17 @@
-import 'package:bhooskhalan/screens/login_page.dart';
-import 'package:bhooskhalan/screens/public_login.dart';
-import 'package:bhooskhalan/screens/register_dialog.dart';
+import 'package:bhooskhalan/screens/login_register_pages/login_register_screen.dart';
+import 'package:bhooskhalan/screens/public_login_screens/public_login_screen.dart';
+import 'package:bhooskhalan/screens/register_screens/public/public_info_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class RegisterForm extends StatefulWidget {
-  const RegisterForm({super.key});
+class RegisterFormPublic extends StatefulWidget {
+  const RegisterFormPublic({super.key});
 
   @override
-  State<RegisterForm> createState() => _RegisterFormState();
+  State<RegisterFormPublic> createState() => _RegisterFormPublicState();
 }
 
-class _RegisterFormState extends State<RegisterForm> {
+class _RegisterFormPublicState extends State<RegisterFormPublic> {
   bool _obscurePassword = true;
   bool _obscureConfirmPassword = true;
 
@@ -30,7 +30,7 @@ class _RegisterFormState extends State<RegisterForm> {
     super.initState();
     // Delay so the dialog doesn't show before build
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      showInfoDialog(context);
+      showPublicInfoDialog(context);
     });
   }
 

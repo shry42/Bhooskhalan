@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-void showInfoDialog(BuildContext context) {
+void showPublicInfoDialog(BuildContext context) {
     showDialog(
       context: context,
       builder: (_) => AlertDialog(

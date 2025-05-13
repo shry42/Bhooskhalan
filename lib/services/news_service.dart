@@ -1,36 +1,25 @@
-import 'dart:convert';
 import 'package:bhooskhalan/models/news_item_model.dart';
-import 'package:http/http.dart' as http;
+
+import 'api_service.dart';
 
 class NewsService {
-  static const String baseUrl = 'https://bhusanket.gsi.gov.in/webapi';
+  static Future<List<NewsItem>> fetchNews() async {
+    try {
+      final data = await ApiService.get('/News/datalist');
 
-static Future<List<NewsItem>> fetchNews() async {
-  final url = Uri.parse('$baseUrl/News/datalist');
-
-  final response = await http.get(
-    url,
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Referer': 'https://bhusanket.gsi.gov.in/',
-    },
-  );
-
-  if (response.statusCode == 200) {
-    final data = jsonDecode(response.body);
-    final List<dynamic> result = data['result'];
-
-    List<NewsItem> newsList =
-        result.map((item) => NewsItem.fromJson(item)).toList();
-
-    // Reverse the list so last item comes first
-    newsList = newsList.reversed.toList();
-
-    return newsList;
-  } else {
-    throw Exception('Failed to load news. Status code: ${response.statusCode}');
+      if (data.containsKey('result') && data['result'] is List) {
+        List<NewsItem> newsList = (data['result'] as List)
+            .map((item) => NewsItem.fromJson(item))
+            .toList()
+            .reversed
+            .toList(); // Latest first
+        return newsList;
+      } else {
+        throw Exception("Unexpected response format: 'result' not found.");
+      }
+    } catch (e) {
+      print("NewsService error: $e");
+      rethrow;
+    }
   }
-}
-
 }
